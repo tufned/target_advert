@@ -7,7 +7,7 @@
     
 
 
-input
+input, textarea
     outline: none
     border: none
 
@@ -94,7 +94,7 @@ body
             padding: 8px 15px
             border-radius: 100px
             backdrop-filter: blur(30px)
-            z-index: 999
+            z-index: 99999
             transition-delay: .3s
 
             .the-name
@@ -642,12 +642,12 @@ body
 
 
 #contact
-    width: 100vw
-    height: 100vh
-    padding: 10vh 0
+    width: 85vw
+    height: 150vh
+    padding: 10vh 5vw 10vh 10vw
 
     .contact-title-area
-        height: 15%
+        height: 20vh
         padding: 0 5%
         @extend %flex
         flex-direction: column
@@ -661,9 +661,10 @@ body
             color: #B4BCD0
 
     .inputs-area
-        height: 85%
+        height: 130vh
         width: 100%
         @extend %flex
+        margin-top: 30px
 
         .forms
             height: 100%
@@ -679,10 +680,13 @@ body
                     padding: 3px
                     width: 100%
                     margin-bottom: 10px
+                    span
+                        color: #B4BCD0
+                        font-size: 18px
 
                 .contact-input
                     height: 40px
-                    width: 350px
+                    width: 400px
                     padding: 5px 35px
                     border-radius: 100px
                     background: #161b22
@@ -704,8 +708,18 @@ body
                 .contact-input::-ms-input-placeholder
                     color: #5F6277
 
+
+                .contact-input-textarea
+                    border-radius: 30px
+                    height: 140px
+                    padding: 15px 35px
+                    resize: none
+
+
+
+
             .ckechbox-shell
-                width: 420px
+                width: 470px
                 margin: 20px 0
                 cursor: pointer
 
@@ -757,6 +771,9 @@ body
 
 
         .submit-but-area
+            height: fit-content
+            margin-top: 15px
+
             .submit-but
                 border-radius: 60px
                 padding: 10px 20px
@@ -788,17 +805,26 @@ body
             @extend %flex
             justify-content: space-between
 
-            .contact-extra-line
-                width: 1px
-                height: 70%
-                background: #1e242d
+            .contact-extra-line-shell
+                height: 100%
+                @extend %flex
+                flex-direction: column
+                .contact-extra-line
+                    width: 1px
+                    height: 85%
+                    background: #1e242d
+                .contacts-extra-line-text
+                    color: #1e242d
+                    margin-bottom: 10px
 
             .contacts-extra
+                height: 80%
                 width: 85%
 
                 .contacts-extra-text
                     color: #B4BCD0
                     margin-bottom: 40px
+                    font-size: 20px
 
                 .contact-extra-shell
                     @extend %flex
@@ -817,6 +843,43 @@ body
 
 
 
+        $submit-popup-height: 550px
+        .submit-popup
+            top: 10vh
+            left: calc( 50% - $submit-popup-height / 2 )
+            position: fixed
+            height: 110px
+            width: $submit-popup-height
+            border-radius: 30px
+            background: #161B22
+            border: 1px solid #2F353D
+            z-index: 9999
+            @extend %flex
+            justify-content: space-evenly
+            // padding: 0 20px
+            @extend %transition
+            transform: translateY(-200%)
+
+            img
+                height: 70px
+                width: 70px
+
+            .submit-popup_text-area
+                height: 50%
+                @extend %flex
+                flex-direction: column
+                justify-content: space-between
+                align-items: start
+                h4
+                    font-size: 22px
+                p
+                    font-size: 18px
+                    color: #B4BCD0
+
+        .submit-popup_active
+            transform: translateY(0)
+
+
 
 
 
@@ -828,7 +891,7 @@ footer
     height: 100px
     width: 90vw
     padding: 0 5vw
-    margin-bottom: 5vh
+    margin: 5vh 0
 
     .footer-line
         width: 100%

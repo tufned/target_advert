@@ -295,6 +295,10 @@
                     <p class="contact-input-label">Ваша пошта?</p>
                     <input class="contact-input contact-input-email" placeholder="Email" type="text">
                 </div>
+                <div class="input-shell reveal">
+                    <p class="contact-input-label">Альтернативна форма звʼязку <br> <span> (не обовʼязково) </span> </p>
+                    <input class="contact-input contact-input-extra-contacts" placeholder="WhatsApp / Telegram / Viber" type="text">
+                </div>
                 <div class="ckechbox-shell ">
                     <p class="contact-input-label reveal">Які послуги Вас цікавлять?</p>
 
@@ -317,13 +321,22 @@
                         <h4 class="checkbox-label">Візитки / Банери</h4>
                     </div>
                 </div>
+                <div class="input-shell reveal">
+                    <p class="contact-input-label">Ваше повідомлення <br> <span> (не обовʼязково) </span></p>
+                    <textarea class="contact-input contact-input-textarea" placeholder="Повідомлення"></textarea>
+                </div>
 
                 <div class="submit-but-area">
                     <button class="submit-but reveal">Надіслати</button>
                 </div>
             </form>
+
+
             <div class="contacts-extra-area">
-                <div class="contact-extra-line"></div>
+                <div class="contact-extra-line-shell">
+                    <p class="contacts-extra-line-text">Або</p>
+                    <div class="contact-extra-line"></div>
+                </div>
                 <div class="contacts-extra">
                     <p class="contacts-extra-text reveal">Наші контакти</p>
                     <div class="contact-extra-shell reveal">
@@ -336,6 +349,17 @@
                     </div>
                 </div>
 
+            </div>
+
+
+
+            <div class="submit-popup">
+                <img src="./assets/icons/check-circle-svgrepo-com.svg" alt="">
+
+                <div class="submit-popup_text-area">
+                    <h4>Ви успішно залишили заяву!</h4>
+                    <p>Ми звʼяжемося з Вами протягом однієї доби</p>
+                </div>
             </div>
         </div>
     </section>
@@ -353,6 +377,18 @@
     </footer>
 
 
+
+
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("wsM8FmWxHiVN_hh30");
+        })();
+    </script>
+    <script src="./js/emailSender.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>

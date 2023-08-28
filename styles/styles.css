@@ -5,7 +5,7 @@
   font-family: "Ubuntu", sans-serif;
 }
 
-input {
+input, textarea {
   outline: none;
   border: none;
 }
@@ -24,13 +24,13 @@ body {
   background: #020101;
 }
 
-footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell, #contact .inputs-area .contacts-extra-area, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell, #contact .inputs-area .forms, #contact .inputs-area, #contact .contact-title-area, #portfolio .projects-area .projects, #portfolio .projects-area, #portfolio .portfolio-title, #portfolio, #services .services-area .service-shell .order-but-area, #services .services-area .service-shell .service-text-area, #services .services-area .service-shell .price-area .price-shell, #services .services-area .service-shell .price-area, #services .services-area, #services h2, #about-target .benefits-area .benefit-card, #about-target .benefits-area, #about-target .why-target-area .why-target-shell, #about-target .why-target-area, #home .home-main .home-main-text-shell, #home .home-main, #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell, #home .nav-bar-area .nav-bar .middle-buts, #home .nav-bar-area .nav-bar, #home .nav-bar-area {
+footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_text-area, #contact .inputs-area .submit-popup, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell, #contact .inputs-area .contacts-extra-area .contact-extra-line-shell, #contact .inputs-area .contacts-extra-area, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell, #contact .inputs-area .forms, #contact .inputs-area, #contact .contact-title-area, #portfolio .projects-area .projects, #portfolio .projects-area, #portfolio .portfolio-title, #portfolio, #services .services-area .service-shell .order-but-area, #services .services-area .service-shell .service-text-area, #services .services-area .service-shell .price-area .price-shell, #services .services-area .service-shell .price-area, #services .services-area, #services h2, #about-target .benefits-area .benefit-card, #about-target .benefits-area, #about-target .why-target-area .why-target-shell, #about-target .why-target-area, #home .home-main .home-main-text-shell, #home .home-main, #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell, #home .nav-bar-area .nav-bar .middle-buts, #home .nav-bar-area .nav-bar, #home .nav-bar-area {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox .checkbox-filled, #about-target .why-target-area .why-target-arrow, button {
+#contact .inputs-area .submit-popup, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox .checkbox-filled, #about-target .why-target-area .why-target-arrow, button {
   transition: all 0.4s ease;
 }
 
@@ -86,7 +86,7 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
   border-radius: 100px;
   -webkit-backdrop-filter: blur(30px);
           backdrop-filter: blur(30px);
-  z-index: 999;
+  z-index: 99999;
   transition-delay: 0.3s;
 }
 #home .nav-bar-area .nav-bar .the-name {
@@ -579,12 +579,12 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
 }
 
 #contact {
-  width: 100vw;
-  height: 100vh;
-  padding: 10vh 0;
+  width: 85vw;
+  height: 150vh;
+  padding: 10vh 5vw 10vh 10vw;
 }
 #contact .contact-title-area {
-  height: 15%;
+  height: 20vh;
   padding: 0 5%;
   flex-direction: column;
   justify-content: space-evenly;
@@ -595,8 +595,9 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
   color: #B4BCD0;
 }
 #contact .inputs-area {
-  height: 85%;
+  height: 130vh;
   width: 100%;
+  margin-top: 30px;
 }
 #contact .inputs-area .forms {
   height: 100%;
@@ -612,9 +613,13 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
   width: 100%;
   margin-bottom: 10px;
 }
+#contact .inputs-area .forms .input-shell .contact-input-label span {
+  color: #B4BCD0;
+  font-size: 18px;
+}
 #contact .inputs-area .forms .input-shell .contact-input {
   height: 40px;
-  width: 350px;
+  width: 400px;
   padding: 5px 35px;
   border-radius: 100px;
   background: #161b22;
@@ -643,8 +648,14 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
 #contact .inputs-area .forms .input-shell .contact-input::-ms-input-placeholder {
   color: #5F6277;
 }
+#contact .inputs-area .forms .input-shell .contact-input-textarea {
+  border-radius: 30px;
+  height: 140px;
+  padding: 15px 35px;
+  resize: none;
+}
 #contact .inputs-area .forms .ckechbox-shell {
-  width: 420px;
+  width: 470px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -691,6 +702,11 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
 #contact .inputs-area .forms .ckechbox-shell .contact-service-banners {
   border-radius: 12px 12px 30px 30px;
 }
+#contact .inputs-area .submit-but-area {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 15px;
+}
 #contact .inputs-area .submit-but-area .submit-but {
   border-radius: 60px;
   padding: 10px 20px;
@@ -715,17 +731,27 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
   width: 45%;
   justify-content: space-between;
 }
-#contact .inputs-area .contacts-extra-area .contact-extra-line {
+#contact .inputs-area .contacts-extra-area .contact-extra-line-shell {
+  height: 100%;
+  flex-direction: column;
+}
+#contact .inputs-area .contacts-extra-area .contact-extra-line-shell .contact-extra-line {
   width: 1px;
-  height: 70%;
+  height: 85%;
   background: #1e242d;
 }
+#contact .inputs-area .contacts-extra-area .contact-extra-line-shell .contacts-extra-line-text {
+  color: #1e242d;
+  margin-bottom: 10px;
+}
 #contact .inputs-area .contacts-extra-area .contacts-extra {
+  height: 80%;
   width: 85%;
 }
 #contact .inputs-area .contacts-extra-area .contacts-extra .contacts-extra-text {
   color: #B4BCD0;
   margin-bottom: 40px;
+  font-size: 20px;
 }
 #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell {
   justify-content: start;
@@ -741,12 +767,45 @@ footer .footer-links-area, #contact .inputs-area .contacts-extra-area .contacts-
   font-weight: 700;
   font-size: 40px;
 }
+#contact .inputs-area .submit-popup {
+  top: 10vh;
+  left: calc(50% - 275px);
+  position: fixed;
+  height: 110px;
+  width: 550px;
+  border-radius: 30px;
+  background: #161B22;
+  border: 1px solid #2F353D;
+  z-index: 9999;
+  justify-content: space-evenly;
+  transform: translateY(-200%);
+}
+#contact .inputs-area .submit-popup img {
+  height: 70px;
+  width: 70px;
+}
+#contact .inputs-area .submit-popup .submit-popup_text-area {
+  height: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+#contact .inputs-area .submit-popup .submit-popup_text-area h4 {
+  font-size: 22px;
+}
+#contact .inputs-area .submit-popup .submit-popup_text-area p {
+  font-size: 18px;
+  color: #B4BCD0;
+}
+#contact .inputs-area .submit-popup_active {
+  transform: translateY(0);
+}
 
 footer {
   height: 100px;
   width: 90vw;
   padding: 0 5vw;
-  margin-bottom: 5vh;
+  margin: 5vh 0;
 }
 footer .footer-line {
   width: 100%;

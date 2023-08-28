@@ -251,6 +251,14 @@ const submitBut = document.querySelector('.submit-but');
 
 let inputsChecked = [0, 0, 0];
 
+var contactForm_data = {
+    name: '',
+    email: '',
+    contacts_extra: '',
+    services: [],
+    message: '',
+};
+
 
 
 contactInput_all.forEach(input => {
@@ -265,14 +273,19 @@ contactInput_all.forEach(input => {
         if (input.classList.contains('contact-input-name')) {
             if (input.value.length > 2) {
                 inputsChecked[0] = 1;
+                contactForm_data.name = input.value.trim();
             } 
             else inputsChecked[0] = 0;
         }
         if (input.classList.contains('contact-input-email')) {
             if (input.value.includes('@') && input.value.includes('.')) {
                 inputsChecked[1] = 1;
+                contactForm_data.email = input.value.trim();
             } 
             else inputsChecked[1] = 0;
+        }
+        if (input.classList.contains('contact-input-extra-contacts')) {
+            contactForm_data.contacts_extra = input.value.trim();
         }
 
 
@@ -282,26 +295,36 @@ contactInput_all.forEach(input => {
 
 
 
+
+let checkboxServices = [];
+
 contactService_all.forEach(elem => {
     elem.addEventListener('click', () => {
         const checkbox = elem.querySelector('.checkbox-filled');
 
-        if (checkbox.classList.contains('checkbox-filled_active') != false) {
+        if (checkbox.classList.contains('checkbox-filled_active')) {
             checkbox.classList.remove('checkbox-filled_active');
         }
         else {
             checkbox.classList.add('checkbox-filled_active');
         }
+ 
 
 
         let checkboxChecked = [0, 0, 0];
+        checkboxServices = [];
+
         for (let i = 0; i < contactService_all.length; i++) {
             const checkbox = contactService_all[i].querySelector('.checkbox-filled');
-    
+            const contactService_text = contactService_all[i].querySelector('.checkbox-label').innerHTML;
+            
             if (checkbox.classList.contains('checkbox-filled_active')) {
                 checkboxChecked[i] = 1;
+
+                if (contactForm_data.services.includes(contactService_text) == false) checkboxServices.push(contactService_text);
             }
             else {
+                if (contactForm_data.services.includes(contactService_text)) checkboxServices.splice(i, 1);
                 checkboxChecked[i] = 0;
             }
         }
@@ -319,12 +342,57 @@ contactService_all.forEach(elem => {
 
 
 
+
+
+
 function inputsCheckedFunc() {
     if (inputsChecked[0] == 1 && inputsChecked[1] == 1 && inputsChecked[2] == 1) {
         submitBut.classList.add('submit-but_active');
-
+        submitBut.addEventListener('click', onSubmitFrom);
     }
     else {
         submitBut.classList.remove('submit-but_active');
+        submitBut.removeEventListener('click', onSubmitFrom);
     }
+}
+
+
+
+const contactInput_textarea = document.querySelector('.contact-input-textarea');
+const submitPopup = document.querySelector('.submit-popup');
+
+
+function onSubmitFrom (e) {
+    e.preventDefault();
+
+    contactForm_data.message = contactInput_textarea.value;
+    contactForm_data.services = checkboxServices.join(' + ');
+
+    console.log(contactForm_data);
+
+    // emailjs.send('targetAd_landing', 'template_nhub7rt', contactForm_data)
+    //     .then(function(response) {
+    //        console.log('SUCCESS!', response.status, response.text);
+    //     }, function(error) {
+    //        console.log('FAILED...', error);
+    //     });
+
+
+
+    contactInput_all.forEach(elem => {
+        elem.value = '';
+    })
+    contactService_all.forEach(elem => {
+        const checkbox = elem.querySelector('.checkbox-filled');
+
+        if (checkbox.classList.contains('checkbox-filled_active')) {
+            checkbox.classList.remove('checkbox-filled_active');
+        }
+    })
+    contactInput_textarea.value = '';
+
+    submitPopup.classList.add('submit-popup_active');
+    setTimeout(() => {
+        submitPopup.classList.remove('submit-popup_active');
+    }, 13000);
 }
