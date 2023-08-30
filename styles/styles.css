@@ -24,7 +24,7 @@ body {
   background: #020101;
 }
 
-footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_text-area, #contact .inputs-area .submit-popup, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell, #contact .inputs-area .contacts-extra-area .contact-extra-line-shell, #contact .inputs-area .contacts-extra-area, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell, #contact .inputs-area .forms, #contact .inputs-area, #contact .contact-title-area, #portfolio .projects-area .projects, #portfolio .projects-area, #portfolio .portfolio-title, #portfolio, #services .services-area .service-shell .order-but-area, #services .services-area .service-shell .service-text-area, #services .services-area .service-shell .price-area .price-shell, #services .services-area .service-shell .price-area, #services .services-area, #services h2, #about-target .benefits-area .benefit-card, #about-target .benefits-area, #about-target .why-target-area .why-target-shell, #about-target .why-target-area, #home .home-main .home-main-text-shell, #home .home-main, #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell, #home .nav-bar-area .nav-bar .middle-buts, #home .nav-bar-area .nav-bar, #home .nav-bar-area {
+footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_text-area, #contact .inputs-area .submit-popup, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell, #contact .inputs-area .contacts-extra-area, #contact .inputs-area .contact-extra-line-shell, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox, #contact .inputs-area .forms .ckechbox-shell .contact-service-shell, #contact .inputs-area .forms, #contact .inputs-area, #contact .contact-title-area, #portfolio .projects-area .projects, #portfolio .projects-area, #portfolio .portfolio-title, #portfolio, #services .services-area .service-shell .order-but-area, #services .services-area .service-shell .service-text-area, #services .services-area .service-shell .price-area .price-shell, #services .services-area .service-shell .price-area, #services .services-area, #services h2, #about-target .benefits-area .benefit-card, #about-target .benefits-area, #about-target .why-target-area .why-target-shell, #about-target .why-target-area, #home .home-main .home-main-text-shell, #home .home-main, #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell, #home .nav-bar-area .nav-bar .middle-buts, #home .nav-bar-area .nav-bar, #home .nav-bar-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,7 +76,7 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   width: 770px;
   background: rgba(33, 33, 33, 0.8);
   box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21);
-  border: 1px solid #313131;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
   justify-content: space-between;
   transition: all 0.6s ease;
   transform: translateY(160%);
@@ -127,30 +127,43 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   height: 85%;
   flex-direction: column;
   text-align: center;
+  overflow: hidden;
 }
 #home .home-main .home-main-text-shell {
-  width: 65%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: start;
+  justify-content: start;
+  position: relative;
+}
+#home .home-main .home-main-text-shell .home-main-text_bg {
+  position: absolute;
+  font-size: 125px;
+  font-weight: 700;
+  color: #121212;
+  z-index: -1;
+  width: -moz-fit-content;
+  width: fit-content;
+  white-space: nowrap;
+  letter-spacing: -4px;
+  transition: all 0.1s ease;
 }
 #home .home-main .home-main-text-shell .home-main-text {
-  font-size: 70px;
+  font-size: 90px;
   font-weight: 700;
+  white-space: nowrap;
   background: linear-gradient(90deg, #ffe259, #ffa751 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0px -10px 200px rgba(255, 167, 81, 0.4);
+  text-shadow: 0px -10px 200px rgba(255, 167, 81, 0.5);
+  margin: 30px 0 40px 0;
+  transition: all 0.2s ease;
 }
 #home .home-main .home-main-text-shell .home-main-text-extra {
   color: #B4BCD0;
   width: 100%;
-}
-#home .home-main .img-area {
-  height: 50%;
-  width: 100%;
+  font-size: 22px;
 }
 
 #about-target {
@@ -198,7 +211,8 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   opacity: 0;
 }
 #about-target .about-text-shell {
-  height: 70vh;
+  height: 60vh;
+  min-height: 500px;
   width: 60%;
   padding: 0 20%;
 }
@@ -223,7 +237,6 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   height: -moz-fit-content;
   height: fit-content;
   width: 100vw;
-  background: #000;
   flex-wrap: wrap;
 }
 #about-target .benefits-area .benefit-card {
@@ -234,6 +247,7 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   height: 210px;
   padding: 0 20px;
   margin: 20px 30px;
+  cursor: default;
 }
 #about-target .benefits-area .benefit-card .benefit-card-icon {
   width: 80px;
@@ -241,17 +255,20 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   margin-right: 20px;
 }
 #about-target .benefits-area .benefit-card .benefit-card-text h4 {
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 15px;
 }
 #about-target .benefits-area .benefit-card .benefit-card-text p {
   color: #B4BCD0;
   font-size: 18px;
 }
+#about-target .benefits-area .benefit-card:hover {
+  transform: scale(0.96);
+}
 
 #services {
   margin: 50vh 0 40vh 0;
-  height: 110vh;
+  height: 900px;
   width: 100vw;
 }
 #services h2 {
@@ -304,11 +321,11 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   border-radius: 60px;
   height: 2px;
   width: 150%;
-  transform: rotate(155deg) translateX(6%) translateY(14px);
+  transform: rotate(155deg) translateX(6%) translateY(17px);
   background: rgba(180, 188, 208, 0.6745098039);
 }
 #services .services-area .service-shell .price-area .price-shell .price-currency {
-  font-size: 55px;
+  font-size: 45px;
   color: #B4BCD0;
 }
 #services .services-area .service-shell .price-area .price-shell .price {
@@ -379,7 +396,7 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 }
 
 #how-it-works {
-  height: 550vh;
+  height: 3000px;
   width: 90vw;
   padding: 5vw 5vw 10% 5vw;
   display: flex;
@@ -454,25 +471,25 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 }
 
 #portfolio {
-  height: 85vh;
-  width: 90vw;
+  height: 750px;
+  width: 100vw;
   position: relative;
-  margin: 50vh 5vw;
+  margin: 50vh 0;
   border: 1px solid #2F353D;
-  background: #161b22;
-  background: #fff;
-  border-radius: 60px;
+  background: #F7F7FF;
 }
 #portfolio .portfolio-title {
   width: 450px;
   align-items: end;
   position: absolute;
-  left: 5%;
+  left: 8%;
   transition: all 0.6s ease;
-  color: #bbbbbd;
-  color: #000;
-  font-size: 64px;
+  color: #726ecf;
+  font-size: 70px;
   font-weight: 700;
+}
+#portfolio .portfolio-title_active {
+  color: #bbbbbd;
 }
 #portfolio .projects-area {
   height: 100%;
@@ -579,12 +596,12 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 }
 
 #contact {
-  width: 85vw;
-  height: 150vh;
-  padding: 10vh 5vw 10vh 10vw;
+  width: 90vw;
+  height: 1200px;
+  padding: 10vh 5vw;
 }
 #contact .contact-title-area {
-  height: 20vh;
+  height: 12%;
   padding: 0 5%;
   flex-direction: column;
   justify-content: space-evenly;
@@ -595,8 +612,10 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   color: #B4BCD0;
 }
 #contact .inputs-area {
-  height: 130vh;
+  height: 88%;
+  min-height: 90%;
   width: 100%;
+  justify-content: space-evenly;
   margin-top: 30px;
 }
 #contact .inputs-area .forms {
@@ -709,7 +728,7 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 }
 #contact .inputs-area .submit-but-area .submit-but {
   border-radius: 60px;
-  padding: 10px 20px;
+  padding: 11px 25px;
   background: inherit;
   border: 1px solid #5F6277;
   color: #5F6277;
@@ -726,27 +745,27 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 #contact .inputs-area .submit-but-area .submit-but_active:hover {
   box-shadow: 0 5px 30px 0 hsla(0, 0%, 100%, 0.5);
 }
-#contact .inputs-area .contacts-extra-area {
+#contact .inputs-area .contact-extra-line-shell {
   height: 100%;
-  width: 45%;
-  justify-content: space-between;
-}
-#contact .inputs-area .contacts-extra-area .contact-extra-line-shell {
-  height: 100%;
+  width: 5%;
   flex-direction: column;
 }
-#contact .inputs-area .contacts-extra-area .contact-extra-line-shell .contact-extra-line {
+#contact .inputs-area .contact-extra-line-shell .contact-extra-line {
   width: 1px;
   height: 85%;
   background: #1e242d;
 }
-#contact .inputs-area .contacts-extra-area .contact-extra-line-shell .contacts-extra-line-text {
+#contact .inputs-area .contact-extra-line-shell .contacts-extra-line-text {
   color: #1e242d;
   margin-bottom: 10px;
 }
+#contact .inputs-area .contacts-extra-area {
+  height: 100%;
+  width: 40%;
+  justify-content: center;
+}
 #contact .inputs-area .contacts-extra-area .contacts-extra {
   height: 80%;
-  width: 85%;
 }
 #contact .inputs-area .contacts-extra-area .contacts-extra .contacts-extra-text {
   color: #B4BCD0;
@@ -773,12 +792,15 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   position: fixed;
   height: 110px;
   width: 550px;
-  border-radius: 30px;
-  background: #161B22;
-  border: 1px solid #2F353D;
+  border-radius: 32px;
   z-index: 9999;
   justify-content: space-evenly;
-  transform: translateY(-200%);
+  transform: translateY(-400%);
+  background: rgba(33, 33, 33, 0.8);
+  box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
 }
 #contact .inputs-area .submit-popup img {
   height: 70px;
@@ -805,7 +827,7 @@ footer {
   height: 100px;
   width: 90vw;
   padding: 0 5vw;
-  margin: 5vh 0;
+  margin: 13vh 0 3vh 0;
 }
 footer .footer-line {
   width: 100%;
@@ -824,4 +846,419 @@ footer .footer-links-area .footer-links p {
   margin: 0 20px;
 }
 
-/* ADAPTIVE *//*# sourceMappingURL=styles.css.map */
+/* ADAPTIVE */
+@media (min-width: 1760px) {
+  * {
+    font-size: 20px;
+  }
+  .section-title {
+    font-size: 75px;
+  }
+  #home .home-main {
+    height: 85%;
+  }
+  #home .home-main .home-main-text-shell .home-main-text_bg {
+    font-size: 165px;
+    top: -3vh;
+    letter-spacing: -6px;
+  }
+  #home .home-main .home-main-text-shell .home-main-text {
+    font-size: 110px;
+  }
+  #home .home-main .home-main-text-shell .home-main-text-extra {
+    font-size: 22px;
+  }
+  #about-target .why-target-area {
+    height: 100vh;
+    margin-bottom: 10vh;
+  }
+  #about-target .why-target-area .why-target-shell .why-target-text {
+    font-size: 36px;
+  }
+  #about-target .benefits-area {
+    width: 90vw;
+    padding: 0 5vw;
+  }
+  #services {
+    margin: 50vh 0 40vh 0;
+    height: 1000px;
+    width: 100vw;
+  }
+  #services .services-area {
+    width: 80%;
+    padding: 0 10%;
+  }
+  #services .services-area .service-shell {
+    width: 320px;
+    height: 500px;
+  }
+  #services .services-area .service-shell .price-area .discount-num {
+    padding: 13px 20px;
+    font-size: 26px;
+  }
+  #services .services-area .service-shell .price-area .price-sale .old-price {
+    font-size: 24px;
+  }
+  #services .services-area .service-shell .price-area .price-shell .price-currency {
+    font-size: 50px;
+  }
+  #services .services-area .service-shell .price-area .price-shell .price {
+    font-size: 85px;
+  }
+  #services .services-area .service-shell .service-text-area .service-text {
+    font-size: 26px;
+  }
+  #services .services-area .service-shell .service-text-area .service-text-extra {
+    font-size: 17px;
+  }
+  #services .services-area .service-shell .order-but-area .order-but {
+    padding: 10px 25px;
+  }
+  #how-it-works {
+    width: 80vw;
+    padding: 10vw 10vw 10% 10vw;
+  }
+  #how-it-works h2 {
+    width: 45%;
+  }
+  #how-it-works .how-text-area {
+    width: 55%;
+  }
+  #how-it-works .how-text-area p {
+    font-size: 22px;
+  }
+  #how-it-works .how-text-area p .how-point {
+    font-size: 36px;
+  }
+  #how-it-works .how-text-area p .anti-reveal-how-text {
+    font-size: 22px;
+  }
+  #how-it-works .how-text-area .how-num-1 {
+    top: 200px;
+  }
+  #how-it-works .how-text-area .how-num-2 {
+    top: 280px;
+  }
+  #how-it-works .how-text-area .how-num-3 {
+    top: 360px;
+  }
+  #how-it-works .how-text-area .how-num-4 {
+    top: 440px;
+  }
+  #how-it-works .how-text-area .how-num-5 {
+    top: 520px;
+  }
+  #how-it-works .how-text-area .how-num-6 {
+    top: 600px;
+  }
+  #how-it-works .how-text-area .how-num-7 {
+    top: 680px;
+  }
+  #how-it-works .how-text-area .how-num-8 {
+    top: 760px;
+  }
+  #portfolio {
+    height: 850px;
+  }
+  #portfolio .portfolio-title {
+    width: 550px;
+    left: 12%;
+    font-size: 80px;
+  }
+  #portfolio .projects-area .projects .project {
+    margin: 0 15px;
+    width: 360px;
+    height: 600px;
+    border-radius: 45px;
+  }
+  #portfolio .projects-area .portfolio_cursor-but {
+    height: 80px;
+    width: 80px;
+  }
+  #contact {
+    width: 85vw;
+    height: 1300px;
+    padding: 10vh 5vw;
+  }
+  #contact .contact-title-area {
+    height: 20vh;
+    padding: 0 5%;
+  }
+  #contact .inputs-area {
+    height: 130vh;
+    margin-top: 30px;
+  }
+  #contact .inputs-area .forms .input-shell {
+    margin: 10px 0;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-label {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-label span {
+    font-size: 19px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input {
+    height: 45px;
+    width: 450px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-textarea {
+    height: 160px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell {
+    width: 520px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-input-label {
+    font-size: 26px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell {
+    margin: 12px 0;
+    height: 65px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+  }
+  #contact .inputs-area .submit-but-area {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-top: 15px;
+  }
+  #contact .inputs-area .submit-but-area .submit-but {
+    border-radius: 60px;
+    padding: 13px 30px;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contacts-extra-text {
+    margin-bottom: 45px;
+    font-size: 22px;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .icon {
+    height: 100%;
+    width: 45px;
+    margin-right: 13px;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .email, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .telegram {
+    font-size: 50px;
+  }
+  #contact .inputs-area .submit-popup {
+    height: 120px;
+    left: calc(50% - 285px);
+    width: 570px;
+    border-radius: 34px;
+  }
+  #contact .inputs-area .submit-popup img {
+    height: 80px;
+    width: 80px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area {
+    height: 55%;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area h4 {
+    font-size: 26px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area p {
+    font-size: 19px;
+  }
+  footer .footer-links-area .footer-links .the-name {
+    font-size: 26px;
+    font-weight: 700;
+  }
+}
+@media (max-width: 1300px) {
+  * {
+    font-size: 20px;
+  }
+  .section-title {
+    font-size: 60px;
+  }
+  #home .home-main {
+    height: 85%;
+  }
+  #home .home-main .home-main-text-shell .home-main-text_bg {
+    font-size: 100px;
+    letter-spacing: -6px;
+  }
+  #home .home-main .home-main-text-shell .home-main-text {
+    font-size: 70px;
+  }
+  #about-target .why-target-area {
+    height: 100vh;
+    margin-bottom: 10vh;
+  }
+  #about-target .why-target-area .why-target-shell .why-target-text {
+    font-size: 36px;
+  }
+  #about-target .benefits-area {
+    width: 90vw;
+    padding: 0 5vw;
+  }
+  #about-target .about-text-shell {
+    height: 650px;
+    min-height: 500px;
+    width: 70%;
+    padding: 0 15%;
+  }
+  #about-target .about-text-shell .about-text {
+    line-height: 30px;
+    font-size: 20px;
+    color: #B4BCD0;
+  }
+  #about-target .about-text-shell .about-text .highlight-underline {
+    color: #B4BCD0;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #ffa751;
+  }
+  #about-target .about-text-shell .about-text .highlight-underline span {
+    color: #B4BCD0;
+  }
+  #about-target .about-text-shell .about-text .highlight {
+    color: #ffa751;
+  }
+  #services {
+    margin: 50vh 0 40vh 0;
+    height: 1450px;
+    width: 100vw;
+  }
+  #services h2 {
+    width: 100%;
+    height: 10%;
+    align-items: center;
+  }
+  #services .services-area {
+    height: 80%;
+    width: 80%;
+    padding: 5% 10%;
+    flex-wrap: wrap;
+  }
+  #services .services-area .service-shell {
+    border-radius: 40px;
+    background: #161B22;
+    border: 1px solid #2F353D;
+    width: 300px;
+    height: 460px;
+  }
+  #services .services-area .service-shell_main {
+    order: -1;
+    margin: 0 25%;
+  }
+  #how-it-works {
+    width: 80vw;
+    padding: 10vw 10vw 10% 10vw;
+  }
+  #how-it-works h2 {
+    width: 40%;
+    top: 120px;
+  }
+  #how-it-works .how-text-area {
+    width: 60%;
+  }
+  #how-it-works .how-text-area .how-num-1 {
+    top: 160px;
+  }
+  #how-it-works .how-text-area .how-num-2 {
+    top: 230px;
+  }
+  #how-it-works .how-text-area .how-num-3 {
+    top: 300px;
+  }
+  #how-it-works .how-text-area .how-num-4 {
+    top: 370px;
+  }
+  #how-it-works .how-text-area .how-num-5 {
+    top: 440px;
+  }
+  #how-it-works .how-text-area .how-num-6 {
+    top: 510px;
+  }
+  #how-it-works .how-text-area .how-num-7 {
+    top: 580px;
+  }
+  #how-it-works .how-text-area .how-num-8 {
+    top: 650px;
+  }
+  #portfolio {
+    height: 900px;
+  }
+  #portfolio .portfolio-title {
+    width: 100%;
+    text-align: center;
+    left: 0;
+    top: 10%;
+  }
+  #portfolio .portfolio-title_active {
+    color: #726ecf;
+  }
+  #portfolio .projects-area {
+    margin-top: 15%;
+    height: 85%;
+  }
+  #portfolio .projects-area .projects-clickable-area {
+    height: 80%;
+    width: 25%;
+  }
+  #portfolio .projects-area .projects-clickable-area-left {
+    border-radius: 0 30px 30px 0;
+    left: -200%;
+  }
+  #portfolio .projects-area .projects-clickable-area-right {
+    border-radius: 30px 0 0 30px;
+    right: 0;
+    width: 100%;
+  }
+  #portfolio .projects-area .projects-clickable-area-left_active {
+    left: 0;
+  }
+  #portfolio .projects-area .projects-clickable-area-right_active {
+    width: 25%;
+  }
+  #portfolio .projects-area .projects {
+    margin-left: 25%;
+  }
+  #portfolio .projects-area .projects-active {
+    margin-left: 5%;
+  }
+  #contact {
+    height: 1450px;
+  }
+  #contact .contact-title-area {
+    padding: 0 5%;
+  }
+  #contact .contact-title-area p {
+    width: 45%;
+  }
+  #contact .inputs-area {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  #contact .inputs-area .contact-extra-line-shell {
+    display: none;
+  }
+  #contact .inputs-area .contacts-extra-area {
+    width: 100%;
+    justify-content: start;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contacts-extra-text {
+    display: none;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell {
+    margin: 10px 0;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .icon {
+    height: 100%;
+    width: 40px;
+    margin-right: 13px;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .email, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .telegram {
+    font-size: 45px;
+  }
+  footer {
+    margin: 50px 0 3vh 0;
+  }
+}/*# sourceMappingURL=styles.css.map */

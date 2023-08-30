@@ -23,6 +23,8 @@ const navbarBut = document.querySelectorAll('.middle-but-shell');
 
 const screenHeight = window.innerHeight;
 
+let ishomeSec = true;
+
 
 
 
@@ -66,6 +68,18 @@ window.addEventListener('scroll', () => {
 
 
 
+
+
+
+
+    if (window.scrollY < homeSec.offsetHeight) ishomeSec = true;
+    else ishomeSec = false;
+
+
+
+
+
+
     // ----------------- why section -----------------
     if (window.scrollY > 50) {
         whyArrow.classList.add('why-target-arrow_active');
@@ -82,7 +96,14 @@ window.addEventListener('scroll', () => {
 
 
     // ----------------- how section -----------------
-    if (antiRevealHowText.getBoundingClientRect().top < 670) {
+    // let howSecAntiRevealPoint = 740;
+    let howSecAntiRevealPoint = 650;
+    if (window.visualViewport.height >= 768 && window.visualViewport.height < 800) howSecAntiRevealPoint = 630;
+    // if (window.visualViewport.height >= 900) howSecAntiRevealPoint = 670;
+    // if (window.visualViewport.height >= 1000) howSecAntiRevealPoint = 750;
+    // console.log(window.visualViewport)
+
+    if (antiRevealHowText.getBoundingClientRect().top < howSecAntiRevealPoint) {
         for (let i = 0; i < howText_all.length; i++) {
             if (i != howText_all.length - 1) howText_all[i].style.opacity = 0;
             else howText_all[i].classList.add('how-span-anim_hide');
@@ -119,6 +140,43 @@ window.addEventListener('scroll', () => {
 
 
 
+// ----------------- home page title on mousemove -----------------
+const homeTitle = document.querySelector('.home-main-text');
+const homeTitleBg = document.querySelector('.home-main-text_bg');
+
+document.addEventListener('mousemove', e => {
+    if (ishomeSec) {
+        homeTitle.style.transform = `translateX(${elemOnMouseMove(homeTitle, e, 30, false).x}px)`;
+
+        homeTitleBg.style.transform = `translate(${elemOnMouseMove(homeTitleBg, e, 15, true).x}px, ${elemOnMouseMove(homeTitleBg, e, 15, true).y}px)`;
+    } 
+});
+
+
+
+function elemOnMouseMove(elem, e, force, invert) {
+    const elemCenterPos_x = elem.getBoundingClientRect().left + elem.getBoundingClientRect().width / 2;
+    const elemCenterPos_y = elem.getBoundingClientRect().top + elem.getBoundingClientRect().height / 2;
+
+    let mouse_x = 0;
+    let mouse_y = 0;
+
+    if (invert) {
+        mouse_x = -(e.clientX - elemCenterPos_x);
+        mouse_y = -(e.clientY - elemCenterPos_y);
+    }
+    else {
+        mouse_x = e.clientX - elemCenterPos_x;
+        mouse_y = e.clientY - elemCenterPos_y;
+    }
+
+    return {
+        x: mouse_x / force,
+        y: mouse_y / force,
+    } 
+}
+
+
 
 
 
@@ -145,7 +203,7 @@ projectsClickableArea_right.addEventListener('click', () => {
     portfolioCursorBut.classList.add('portfolio_cursor-but_pressed');
     
     if (portfolioButPress == 0) {
-        portfolioTitle.style.color = '#bbbbbd';
+        portfolioTitle.classList.add('portfolio-title_active');
         project_all[1].classList.remove('project-2');
         project_all[2].classList.remove('project-3');
         projects.classList.add('projects-active');
@@ -162,7 +220,7 @@ projectsClickableArea_right.addEventListener('click', () => {
 
 projectsClickableArea_left.addEventListener('click', () => {
     if (portfolioButPress == 0) {
-        portfolioTitle.style.color = '#000';
+        portfolioTitle.classList.remove('portfolio-title_active');
         project_all[1].classList.add('project-2');
         project_all[2].classList.add('project-3');
         bool = false;

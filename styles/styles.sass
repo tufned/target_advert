@@ -85,7 +85,7 @@ body
             // width: 850px
             background: rgba(33, 33, 33, 0.8)
             box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21)
-            border: 1px solid #313131
+            border: 1px solid hsla(0, 0%, 100%, 0.1)
             justify-content: space-between
             transition: all 0.6s ease
             transform: translateY(160%)
@@ -147,31 +147,50 @@ body
         @extend %flex
         flex-direction: column
         text-align: center
+        overflow: hidden
 
         .home-main-text-shell
-            width: 65%
-            height: 50%
+            width: 100%
+            height: 100%
             @extend %flex
             flex-direction: column
-            justify-content: space-evenly
-            align-items: start
+            justify-content: start
+            position: relative
+
+            .home-main-text_bg
+                position: absolute
+                // left: -20%
+                // top: 12vh
+                font-size: 125px
+                font-weight: 700
+                color: #121212
+                z-index: -1
+                width: fit-content
+                white-space: nowrap
+                letter-spacing: -4px
+                transition: all .1s ease
 
             .home-main-text
-                font-size: 70px
+                // width: 100%
+                font-size: 90px
                 font-weight: 700
+                white-space: nowrap
                 background: linear-gradient(90deg, #ffe259, #ffa751 100%)
                 background-clip: text
                 -webkit-background-clip: text
                 -webkit-text-fill-color: transparent
-                text-shadow: 0px -10px 200px rgba(255, 167, 81, 0.4)
+                text-shadow: 0px -10px 200px rgba(255, 167, 81, 0.5)
+                margin: 30px 0 40px 0
+                transition: all .2s ease
             
             .home-main-text-extra
                 color: #B4BCD0
                 width: 100%
+                font-size: 22px
 
-        .img-area
-            height: 50%
-            width: 100%
+        // .img-area
+        //     height: 50%
+        //     width: 100%
 
                 
 
@@ -223,7 +242,8 @@ body
 
 
     .about-text-shell
-        height: 70vh
+        height: 60vh
+        min-height: 500px
         width: 60%
         padding: 0 20%
         // text-align: center
@@ -246,7 +266,6 @@ body
         min-height: 70vh
         height: fit-content
         width: 100vw
-        background: #000
         @extend %flex
         flex-wrap: wrap
 
@@ -259,6 +278,7 @@ body
             @extend %flex
             padding: 0 20px
             margin: 20px 30px
+            cursor: default
 
             .benefit-card-icon
                 width: 80px
@@ -267,11 +287,14 @@ body
             
             .benefit-card-text
                 h4
-                    font-size: 22px
+                    font-size: 24px
                     margin-bottom: 15px 
                 p
                     color: #B4BCD0
                     font-size: 18px
+
+        .benefit-card:hover
+            transform: scale(0.96)
 
 
 
@@ -282,7 +305,7 @@ body
 
 #services
     margin: 50vh 0 40vh 0
-    height: 110vh
+    height: 900px
     width: 100vw
 
     h2
@@ -339,13 +362,13 @@ body
                         border-radius: 60px
                         height: 2px
                         width: 150%
-                        transform: rotate(155deg) translateX(6%) translateY(14px) 
+                        transform: rotate(155deg) translateX(6%) translateY(17px) 
                         background: #b4bcd0ac
 
                 .price-shell
                     @extend %flex
                     .price-currency
-                        font-size: 55px
+                        font-size: 45px
                         color: #B4BCD0
                     .price
                         font-weight: 700
@@ -420,7 +443,7 @@ body
 
 
 #how-it-works
-    height: 550vh
+    height: 3000px
     width: 90vw
     padding: 5vw 5vw 10% 5vw 
     display: flex
@@ -503,30 +526,29 @@ body
 
 
 #portfolio
-    height: 85vh
-    width: 90vw
+    height: 750px
+    width: 100vw
     @extend %flex
     position: relative
-    margin: 50vh 5vw
+    margin: 50vh 0
     border: 1px solid #2F353D
     // border: 1px solid #7b78e2
     // box-shadow: 0px 0px 120px rgba(123, 120, 226, 0.3) 
-    background: #161b22
-    background: #fff
-    border-radius: 60px
+    background: #F7F7FF
     
     .portfolio-title
         width: 450px
         @extend %flex
         align-items: end
         position: absolute
-        left: 5%
+        left: 8%
         transition: all .6s ease
         // margin-left: 5%
-        color: #bbbbbd
-        color: #000
-        font-size: 64px
+        color: #726ecf
+        font-size: 70px
         font-weight: 700
+    .portfolio-title_active
+        color: #bbbbbd
 
     .projects-area
         // padding: 5% 0
@@ -642,18 +664,16 @@ body
 
 
 #contact
-    width: 85vw
-    height: 150vh
-    padding: 10vh 5vw 10vh 10vw
+    width: 90vw
+    height: 1200px
+    padding: 10vh 5vw
 
     .contact-title-area
-        height: 20vh
+        height: 12%
         padding: 0 5%
         @extend %flex
         flex-direction: column
         justify-content: space-evenly
-
-        .contact-title
 
         p
             text-align: center
@@ -661,9 +681,11 @@ body
             color: #B4BCD0
 
     .inputs-area
-        height: 130vh
+        height: 88%
+        min-height: 90%
         width: 100%
         @extend %flex
+        justify-content: space-evenly
         margin-top: 30px
 
         .forms
@@ -776,7 +798,7 @@ body
 
             .submit-but
                 border-radius: 60px
-                padding: 10px 20px
+                padding: 11px 25px
                 background: inherit
                 border: 1px solid #5F6277
                 color: #5F6277
@@ -796,30 +818,31 @@ body
 
 
 
+        .contact-extra-line-shell
+            height: 100%
+            width: 5%
+            @extend %flex
+            flex-direction: column
+            .contact-extra-line
+                width: 1px
+                height: 85%
+                background: #1e242d
+            .contacts-extra-line-text
+                color: #1e242d
+                margin-bottom: 10px
+
 
 
 
         .contacts-extra-area
             height: 100%
-            width: 45%
+            width: 40%
             @extend %flex
-            justify-content: space-between
-
-            .contact-extra-line-shell
-                height: 100%
-                @extend %flex
-                flex-direction: column
-                .contact-extra-line
-                    width: 1px
-                    height: 85%
-                    background: #1e242d
-                .contacts-extra-line-text
-                    color: #1e242d
-                    margin-bottom: 10px
+            justify-content: center
 
             .contacts-extra
                 height: 80%
-                width: 85%
+                // width: 85%
 
                 .contacts-extra-text
                     color: #B4BCD0
@@ -850,15 +873,16 @@ body
             position: fixed
             height: 110px
             width: $submit-popup-height
-            border-radius: 30px
-            background: #161B22
-            border: 1px solid #2F353D
+            border-radius: 32px
             z-index: 9999
             @extend %flex
             justify-content: space-evenly
-            // padding: 0 20px
             @extend %transition
-            transform: translateY(-200%)
+            transform: translateY(-400%)
+            background: rgba(33, 33, 33, 0.8)
+            box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21)
+            border: 1px solid hsla(0, 0%, 100%, 0.1)
+            backdrop-filter: blur(30px)
 
             img
                 height: 70px
@@ -891,7 +915,7 @@ footer
     height: 100px
     width: 90vw
     padding: 0 5vw
-    margin: 5vh 0
+    margin: 13vh 0 3vh 0
 
     .footer-line
         width: 100%
@@ -925,4 +949,4 @@ footer
 
 
 /* ADAPTIVE */
-// @import adaptive
+@import adaptive
