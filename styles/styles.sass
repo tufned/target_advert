@@ -88,18 +88,18 @@ body
             border: 1px solid hsla(0, 0%, 100%, 0.1)
             justify-content: space-between
             transition: all 0.6s ease
-            transform: translateY(160%)
             position: fixed
-            top: -80px
+            top: 20px
             padding: 8px 15px
             border-radius: 100px
             backdrop-filter: blur(30px)
             z-index: 99999
-            transition-delay: .3s
+            transform: translateY(0)
 
             .the-name
                 font-size: 18px
                 font-weight: 700
+                margin-left: 5px 
 
             .home-contact-but
                 border-radius: 100px
@@ -137,6 +137,30 @@ body
                     color: #fff
                     text-shadow: 0 0 20px hsla(0, 0%, 100%, 0.4)
 
+            .navbar_close-but  
+                display: none
+                width: 100px
+                height: 100px
+                margin: 5%
+
+
+
+        .navbar-mobile-but
+            height: 80px
+            width: 80px
+            background: rgba(33, 33, 33, 0.8)
+            box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21)
+            border: 1px solid hsla(0, 0%, 100%, 0.1)
+            border-radius: 200px
+            @extend %flex
+            position: fixed
+            top: 35px
+            right: 35px
+            z-index: 999
+            display: none
+            img
+                height: 80%
+                width: 80%
 
 
 
@@ -149,8 +173,10 @@ body
         text-align: center
         overflow: hidden
 
+        $home-main-text-shell_padding: 20px
         .home-main-text-shell
-            width: 100%
+            padding-top: $home-main-text-shell_padding
+            width: calc( 100% - $home-main-text-shell_padding )
             height: 100%
             @extend %flex
             flex-direction: column
@@ -179,8 +205,8 @@ body
                 background-clip: text
                 -webkit-background-clip: text
                 -webkit-text-fill-color: transparent
-                text-shadow: 0px -10px 200px rgba(255, 167, 81, 0.5)
-                margin: 30px 0 40px 0
+                text-shadow: 0px 0px 100px rgba(255, 167, 81, 0.5)
+                margin: 30px 0 50px 0
                 transition: all .2s ease
             
             .home-main-text-extra
@@ -192,7 +218,12 @@ body
         //     height: 50%
         //     width: 100%
 
-                
+
+
+
+
+
+
 
 #about-target
     height: fit-content
@@ -249,7 +280,6 @@ body
         // text-align: center
         .about-text
             line-height: 30px
-            font-size: 20px
             color: #B4BCD0
 
             .highlight-underline

@@ -45,6 +45,34 @@ for (let link of links) {
 
 
 
+// ----------------- navbar mobile -----------------
+const navbarMobileBut = document.querySelector('.navbar-mobile-but');
+const navbarCloseBut = document.querySelector('.navbar_close-but');
+
+
+
+navbarMobileBut.addEventListener('click', () => {
+    navBar.style.transform = 'translateY(0)';
+    setTimeout(() => {
+        navBar.style.borderRadius = 0;
+    }, 400);
+
+    navbarCloseBut.addEventListener('click', onNavbarCloseBut);
+});
+
+
+function onNavbarCloseBut() {
+    navBar.style = null;
+}
+
+
+
+
+
+
+
+
+
 window.addEventListener('scroll', () => {
     // ----------------- navbar -----------------
     navbarBut.forEach(elem => {
@@ -98,7 +126,8 @@ window.addEventListener('scroll', () => {
     // ----------------- how section -----------------
     // let howSecAntiRevealPoint = 740;
     let howSecAntiRevealPoint = 650;
-    if (window.visualViewport.height >= 768 && window.visualViewport.height < 800) howSecAntiRevealPoint = 630;
+    if (screenHeight >= 768 && screenHeight < 800) howSecAntiRevealPoint = 630;
+    else if (screenHeight >= 600 && screenHeight < 768) howSecAntiRevealPoint = 520;
     // if (window.visualViewport.height >= 900) howSecAntiRevealPoint = 670;
     // if (window.visualViewport.height >= 1000) howSecAntiRevealPoint = 750;
     // console.log(window.visualViewport)
