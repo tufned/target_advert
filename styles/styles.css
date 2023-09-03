@@ -34,14 +34,6 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   transition: all 0.4s ease;
 }
 
-@keyframes press-anim {
-  50% {
-    transform: scale(0.94);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 .reveal {
   transition: all 1s ease;
   position: relative;
@@ -135,6 +127,8 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   background: rgba(33, 33, 33, 0.8);
   box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21);
   border: 1px solid hsla(0, 0%, 100%, 0.1);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
   border-radius: 200px;
   position: fixed;
   top: 35px;
@@ -145,6 +139,10 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 #home .nav-bar-area .navbar-mobile-but img {
   height: 80%;
   width: 80%;
+}
+#home .nav-bar-area .navbar-company-title_mobile {
+  width: 80%;
+  display: none;
 }
 #home .home-main {
   height: 85%;
@@ -298,6 +296,7 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   width: 100%;
   height: 15%;
   align-items: end;
+  text-align: center;
 }
 #services .services-area {
   height: 85%;
@@ -547,6 +546,18 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 #portfolio .projects-area .projects-clickable-area-right_active {
   width: 25%;
 }
+#portfolio .projects-area .projects-clickable-area_mobile {
+  height: 80%;
+  width: 50%;
+  margin: 0 0 0 25%;
+  position: absolute;
+  z-index: 12;
+  transition: all 0.1s ease;
+  display: none;
+}
+#portfolio .projects-area .projects-clickable-area_mobile_active {
+  display: block;
+}
 #portfolio .projects-area .projects {
   height: 100%;
   width: -moz-fit-content;
@@ -605,7 +616,7 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   transition-duration: 0.15s;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  opacity: 0;
+  opacity: 1;
 }
 #portfolio .projects-area .portfolio_cursor-but img {
   height: 100%;
@@ -613,9 +624,6 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
 }
 #portfolio .projects-area .portfolio_cursor-but_hover {
   opacity: 1;
-}
-#portfolio .projects-area .portfolio_cursor-but_pressed {
-  animation: 0.5s ease press-anim;
 }
 
 #contact {
@@ -628,6 +636,7 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   padding: 0 5%;
   flex-direction: column;
   justify-content: space-evenly;
+  text-align: center;
 }
 #contact .contact-title-area p {
   text-align: center;
@@ -810,11 +819,11 @@ footer .footer-links-area, #contact .inputs-area .submit-popup .submit-popup_tex
   font-size: 40px;
 }
 #contact .inputs-area .submit-popup {
-  top: 10vh;
-  left: calc(50% - 275px);
+  top: 95px;
+  left: calc(50% - 265px);
   position: fixed;
   height: 110px;
-  width: 550px;
+  width: 530px;
   border-radius: 32px;
   z-index: 9999;
   justify-content: space-evenly;
@@ -1240,7 +1249,7 @@ footer .footer-links-area .footer-links p {
     width: 25%;
   }
   #portfolio .projects-area .projects {
-    margin-left: 25%;
+    margin-left: 30%;
   }
   #portfolio .projects-area .projects-active {
     margin-left: 5%;
@@ -1284,6 +1293,25 @@ footer .footer-links-area .footer-links p {
   }
   #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .email, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .telegram {
     font-size: 45px;
+  }
+  #contact .inputs-area .submit-popup {
+    height: 110px;
+    left: calc(50% - 250px);
+    width: 500px;
+    border-radius: 30px;
+  }
+  #contact .inputs-area .submit-popup img {
+    height: 65px;
+    width: 65px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area {
+    height: 50%;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area h4 {
+    font-size: 22px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area p {
+    font-size: 18px;
   }
   footer {
     margin: 50px 0 3vh 0;
@@ -1339,7 +1367,7 @@ footer .footer-links-area .footer-links p {
   #about-target .why-target-area .why-target-shell .why-target-text {
     font-size: 27px;
   }
-  #about-target .why-target-area .why-target-shell .why-target-text .why-target-text_active {
+  #about-target .why-target-area .why-target-shell .why-target-text_active {
     transform: scale(1.7);
   }
   #about-target .why-target-area .why-target-arrow {
@@ -1454,6 +1482,9 @@ footer .footer-links-area .footer-links p {
   #how-it-works .how-text-area p .how-point {
     font-size: 28px;
   }
+  #how-it-works .how-text-area p .anti-reveal-how-text {
+    font-size: 16px;
+  }
   #how-it-works .how-text-area .how-num-1 {
     top: 110px;
   }
@@ -1553,7 +1584,7 @@ footer .footer-links-area .footer-links p {
     height: 35px;
     width: 350px;
     padding: 5px 30px;
-    font-size: 16px;
+    font-size: 12px;
   }
   #contact .inputs-area .forms .input-shell .contact-input-textarea {
     border-radius: 30px;
@@ -1587,10 +1618,10 @@ footer .footer-links-area .footer-links p {
     border-radius: 4px;
   }
   #contact .inputs-area .forms .ckechbox-shell .contact-service-target {
-    border-radius: 30px 30px 12px 12px;
+    border-radius: 26px 26px 12px 12px;
   }
   #contact .inputs-area .forms .ckechbox-shell .contact-service-banners {
-    border-radius: 12px 12px 30px 30px;
+    border-radius: 12px 12px 26px 26px;
   }
   #contact .inputs-area .submit-but-area {
     height: -moz-fit-content;
@@ -1643,6 +1674,26 @@ footer .footer-links-area .footer-links p {
   #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .email, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .telegram {
     font-size: 35px;
   }
+  #contact .inputs-area .submit-popup {
+    height: 105px;
+    top: 75px;
+    left: calc(50% - 235px);
+    width: 470px;
+    border-radius: 28px;
+  }
+  #contact .inputs-area .submit-popup img {
+    height: 60px;
+    width: 60px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area {
+    height: 50%;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area h4 {
+    font-size: 20px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area p {
+    font-size: 16px;
+  }
   footer {
     margin: 25px 0 3vh 0;
   }
@@ -1650,12 +1701,20 @@ footer .footer-links-area .footer-links p {
     font-size: 20px;
   }
 }
-@media (max-width: 768px) {
+@media (min-width: 850px) and (max-width: 1024px) {
+  #portfolio .projects-area .projects {
+    margin-left: 27%;
+  }
+  #portfolio .projects-area .projects-active {
+    margin-left: 2%;
+  }
+}
+@media (max-width: 767px) {
   * {
-    font-size: 20px;
+    font-size: 16px;
   }
   .section-title {
-    font-size: 60px;
+    font-size: 40px;
   }
   #home .nav-bar-area {
     height: 15%;
@@ -1676,17 +1735,17 @@ footer .footer-links-area .footer-links p {
     -webkit-backdrop-filter: blur(35px);
             backdrop-filter: blur(35px);
     border-radius: 0 0 80px 80px;
-    transform: translateY(-400%);
+    transform: translateY(-200%);
   }
   #home .nav-bar-area .nav-bar .the-name {
-    font-size: 50px;
+    font-size: 40px;
   }
   #home .nav-bar-area .nav-bar .home-contact-but {
-    padding: 20px 26px;
-    font-size: 30px;
+    padding: 17px 22px;
+    font-size: 24px;
   }
   #home .nav-bar-area .nav-bar .middle-buts {
-    height: 45%;
+    height: 40%;
     width: 100%;
     flex-direction: column;
     justify-content: space-evenly;
@@ -1694,12 +1753,8 @@ footer .footer-links-area .footer-links p {
   #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell {
     height: -moz-fit-content;
     height: fit-content;
-    padding: 22px 30px;
-    font-size: 30px;
-  }
-  #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell:hover {
-    cursor: pointer;
-    color: #fff;
+    padding: 18px 24px;
+    font-size: 24px;
   }
   #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell_active {
     background: #323030;
@@ -1708,30 +1763,850 @@ footer .footer-links-area .footer-links p {
   }
   #home .nav-bar-area .nav-bar .navbar_close-but {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: 7% 5% 2% 5%;
   }
   #home .nav-bar-area .navbar-mobile-but {
     display: flex;
-    height: 80px;
-    width: 80px;
-    top: 35px;
-    right: 35px;
+    height: 60px;
+    width: 60px;
+    top: 25px;
+    right: 25px;
+  }
+  #home .nav-bar-area .navbar-company-title_mobile {
+    width: 90%;
+    height: 80%;
+    margin-top: 65px;
+    font-size: 25px;
+    display: block;
   }
   #home .home-main {
     height: 85%;
   }
   #home .home-main .home-main-text-shell {
-    padding-top: 40px;
-    width: calc(100% - 40px);
+    padding-top: 50px;
+    width: calc(100% - 50px);
   }
   #home .home-main .home-main-text-shell .home-main-text_bg {
-    font-size: 100px;
+    font-size: 70px;
     letter-spacing: -6px;
+    line-height: 70px;
+    top: 6vh;
   }
   #home .home-main .home-main-text-shell .home-main-text {
-    font-size: 70px;
+    font-size: 40px;
     text-shadow: 0px -10px 100px rgba(255, 167, 81, 0.5);
+  }
+  #home .home-main .home-main-text-shell .home-main-text-extra {
+    font-size: 17px;
+  }
+  #about-target .why-target-area .why-target-shell .why-target-text {
+    font-size: 27px;
+  }
+  #about-target .why-target-area .why-target-shell .why-target-text_active {
+    transform: scale(1.5);
+  }
+  #about-target .why-target-area .why-target-arrow {
+    margin: 20px 0 0 0;
+    height: 50px;
+  }
+  #about-target .about-text-shell {
+    height: 650px;
+    width: 80%;
+    padding: 0 10%;
+  }
+  #about-target .about-text-shell .about-text {
+    line-height: 25px;
+  }
+  #about-target .benefits-area {
+    min-height: 70vh;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  #about-target .benefits-area .benefit-card {
+    border-radius: 35px;
+    width: 450px;
+    height: 170px;
+    padding: 0 20px;
+    margin: 12px 30px;
+  }
+  #about-target .benefits-area .benefit-card .benefit-card-icon {
+    width: 60px;
+    height: 60px;
+  }
+  #about-target .benefits-area .benefit-card .benefit-card-text h4 {
+    font-size: 19px;
+    margin-bottom: 16px;
+  }
+  #about-target .benefits-area .benefit-card .benefit-card-text p {
+    font-size: 15px;
+  }
+  #services {
+    margin: 50vh 0 200px 0;
+    height: 1700px;
+  }
+  #services h2 {
+    height: 10%;
+    width: 70%;
+    padding: 0 15%;
+  }
+  #services .services-area {
+    height: 80%;
+    width: 86%;
+    padding: 5% 7%;
+    justify-content: center;
+  }
+  #services .services-area .service-shell {
+    border-radius: 40px;
+    background: #161B22;
+    border: 1px solid #2F353D;
+    width: 250px;
+    height: 390px;
+    margin: 0 15%;
+  }
+  #services .services-area .service-shell .price-area {
+    padding-bottom: 10%;
+    height: 35%;
+  }
+  #services .services-area .service-shell .price-area .discount-num {
+    font-size: 20px;
+  }
+  #services .services-area .service-shell .price-area .price-shell .price-currency {
+    font-size: 40px;
+  }
+  #services .services-area .service-shell .price-area .price-shell .price {
+    font-size: 75px;
+  }
+  #services .services-area .service-shell .price-area .price-extra {
+    font-size: 17px;
+  }
+  #services .services-area .service-shell .order-but-area .order-but {
+    border-radius: 60px;
+    padding: 13px 35px;
+  }
+  #services .services-area .service-shell .service-text-area {
+    width: 100%;
+    height: 40%;
+    flex-direction: column;
+  }
+  #services .services-area .service-shell .service-text-area .service-text {
+    font-size: 20px;
+  }
+  #services .services-area .service-shell .service-text-area .service-text-extra {
+    font-size: 15px;
+  }
+  #services .services-area .service-shell_main {
+    width: 270px;
+    height: 420px;
+    order: -1;
+    margin: 35px 15%;
+    box-shadow: 0px -10px 120px rgba(255, 167, 81, 0.2);
+    border-color: #ffa751;
+    transform: scale(1.09);
+  }
+  #services .services-area .service-shell_main .service-text-area .service-text {
+    font-size: 26px;
+  }
+  #how-it-works {
+    width: 86vw;
+    padding: 10vw 7vw 10% 7vw;
+    flex-direction: column;
+    justify-content: start;
+  }
+  #how-it-works h2 {
+    width: 100%;
+    text-align: center;
+    top: 100px;
+    transition: all 0.3s ease;
+  }
+  #how-it-works .how-text-area {
+    width: 100%;
+  }
+  #how-it-works .how-text-area p {
+    font-size: 16px;
+  }
+  #how-it-works .how-text-area p .how-point {
+    font-size: 28px;
+  }
+  #how-it-works .how-text-area .how-num-1 {
+    top: 170px;
+  }
+  #how-it-works .how-text-area .how-num-2 {
+    top: 220px;
+  }
+  #how-it-works .how-text-area .how-num-3 {
+    top: 280px;
+  }
+  #how-it-works .how-text-area .how-num-4 {
+    top: 340px;
+  }
+  #how-it-works .how-text-area .how-num-5 {
+    top: 400px;
+  }
+  #how-it-works .how-text-area .how-num-6 {
+    top: 460px;
+  }
+  #how-it-works .how-text-area .how-num-7 {
+    top: 520px;
+  }
+  #how-it-works .how-text-area .how-num-8 {
+    top: 580px;
+  }
+  #portfolio {
+    height: 650px;
+    margin: 250px 0;
+  }
+  #portfolio .portfolio-title {
+    width: 100%;
+    text-align: center;
+    left: 0;
+    top: 10%;
+    font-size: 40px;
+  }
+  #portfolio .portfolio-title_active {
+    color: #726ecf;
+  }
+  #portfolio .projects-area {
+    margin-top: 15%;
+    height: 85%;
+  }
+  #portfolio .projects-area .projects-clickable-area {
+    height: 80%;
+    width: 20%;
+  }
+  #portfolio .projects-area .projects-clickable-area-left {
+    border-radius: 0 30px 30px 0;
+    left: -200%;
+  }
+  #portfolio .projects-area .projects-clickable-area-right {
+    border-radius: 30px 0 0 30px;
+    right: 0;
+    width: 100%;
+  }
+  #portfolio .projects-area .projects-clickable-area-left_active {
+    left: 0;
+  }
+  #portfolio .projects-area .projects-clickable-area-right_active {
+    width: 20%;
+  }
+  #portfolio .projects-area .projects-clickable-area_mobile {
+    width: 60%;
+    margin: 0 0 0 20%;
+  }
+  #portfolio .projects-area .projects {
+    margin-left: 17%;
+  }
+  #portfolio .projects-area .projects .project {
+    margin: 0 8px;
+    width: 250px;
+    height: 400px;
+    border-radius: 40px;
+  }
+  #portfolio .projects-area .projects .project-2 {
+    z-index: 5;
+    transform: scale(0.85) translateX(-90%);
+  }
+  #portfolio .projects-area .projects .project-3 {
+    z-index: 4;
+    transform: scale(0.7) translateX(-230%);
+  }
+  #portfolio .projects-area .projects-active {
+    margin-left: 2%;
+  }
+  #contact {
+    height: 1450px;
+    padding: 10vh 5vw 8vh 5vw;
+  }
+  #contact .contact-title-area {
+    height: 8%;
+    padding: 0 5%;
+  }
+  #contact .contact-title-area p {
+    width: 70%;
+  }
+  #contact .inputs-area {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  #contact .inputs-area .forms .input-shell {
+    margin: 10px 0;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-label {
+    font-size: 18px;
+    padding: 2px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-label span {
+    font-size: 15px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input {
+    height: 35px;
+    width: 300px;
+    padding: 5px 30px;
+    font-size: 16px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-textarea {
+    border-radius: 30px;
+    height: 140px;
+    padding: 15px 30px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell {
+    width: 360px;
+    margin: 15px 0;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-input-label {
+    font-size: 20px;
+    padding: 3px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell {
+    height: 50px;
+    width: 90%;
+    padding: 0 5%;
+    border-radius: 12px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox {
+    width: 23px;
+    height: 23px;
+    margin: 0 10% 0 5%;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox .checkbox-filled {
+    width: 70%;
+    height: 70%;
+    border-radius: 4px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-target {
+    border-radius: 26px 26px 12px 12px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-banners {
+    border-radius: 12px 12px 26px 26px;
+  }
+  #contact .inputs-area .submit-but-area {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-top: 15px;
+  }
+  #contact .inputs-area .submit-but-area .submit-but {
+    border-radius: 60px;
+    margin: 10px 0;
+    padding: 15px 35px;
+  }
+  #contact .inputs-area .contact-extra-line-shell {
+    display: none;
+  }
+  #contact .inputs-area .contacts-extra-area {
+    width: 100%;
+    justify-content: start;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contacts-extra-text {
+    display: none;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell {
+    margin: 10px 0;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .icon {
+    height: 100%;
+    width: 40px;
+    margin-right: 13px;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .email, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .telegram {
+    font-size: 35px;
+  }
+  #contact .inputs-area .submit-popup {
+    height: 95px;
+    top: 100px;
+    left: calc(50% - 205px);
+    width: 410px;
+    border-radius: 26px;
+  }
+  #contact .inputs-area .submit-popup img {
+    height: 55px;
+    width: 55px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area {
+    height: 55%;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area h4 {
+    font-size: 19px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area p {
+    font-size: 14px;
+  }
+  footer {
+    margin: 0px 0 8px 0;
+  }
+  footer .footer-links-area .footer-links .the-name {
+    font-size: 20px;
+  }
+}
+@media (min-width: 570px) and (max-width: 767px) {
+  #portfolio .projects-area .projects {
+    margin-left: 24%;
+  }
+  #portfolio .projects-area .projects-active {
+    margin-left: 2%;
+  }
+}
+@media (max-width: 480px) {
+  * {
+    font-size: 14px;
+  }
+  .section-title {
+    font-size: 35px;
+  }
+  #home .nav-bar-area {
+    height: 15%;
+    padding: 0 5%;
+  }
+  #home .nav-bar-area .nav-bar {
+    height: 93.5vh;
+    width: 100.5vw;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-width: 0;
+    transform: translateY(0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 7vh 0 0 0;
+    border-radius: 0;
+    -webkit-backdrop-filter: blur(35px);
+            backdrop-filter: blur(35px);
+    border-radius: 0 0 80px 80px;
+    transform: translateY(-200%);
+  }
+  #home .nav-bar-area .nav-bar .the-name {
+    font-size: 35px;
+  }
+  #home .nav-bar-area .nav-bar .home-contact-but {
+    padding: 15px 20px;
+    font-size: 22px;
+  }
+  #home .nav-bar-area .nav-bar .middle-buts {
+    height: 40%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell {
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 18px 24px;
+    font-size: 20px;
+  }
+  #home .nav-bar-area .nav-bar .middle-buts .middle-but-shell_active {
+    background: #323030;
+    color: #fff;
+    text-shadow: 0 0 20px hsla(0, 0%, 100%, 0.4);
+  }
+  #home .nav-bar-area .nav-bar .navbar_close-but {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 7% 5% 2% 5%;
+  }
+  #home .nav-bar-area .navbar-mobile-but {
+    display: flex;
+    height: 55px;
+    width: 55px;
+    top: 25px;
+    right: 25px;
+  }
+  #home .nav-bar-area .navbar-company-title_mobile {
+    width: 90%;
+    height: 80%;
+    margin-top: 60px;
+    font-size: 20px;
+    display: block;
+  }
+  #home .home-main {
+    height: 85%;
+  }
+  #home .home-main .home-main-text-shell {
+    padding-top: 50px;
+    width: calc(100% - 50px);
+  }
+  #home .home-main .home-main-text-shell .home-main-text_bg {
+    font-size: 55px;
+    letter-spacing: -5px;
+    line-height: 70px;
+    top: 50px;
+  }
+  #home .home-main .home-main-text-shell .home-main-text {
+    letter-spacing: -2px;
+    font-size: 35px;
+  }
+  #home .home-main .home-main-text-shell .home-main-text-extra {
+    font-size: 15px;
+  }
+  #about-target .why-target-area {
+    margin-bottom: 60px;
+  }
+  #about-target .why-target-area .why-target-shell .why-target-text {
+    font-size: 22px;
+  }
+  #about-target .why-target-area .why-target-shell .why-target-text_active {
+    transform: scale(1.5);
+  }
+  #about-target .why-target-area .why-target-arrow {
+    margin: 12px 0 0 0;
+    height: 35px;
+  }
+  #about-target .about-text-shell {
+    height: 650px;
+    width: 80%;
+    padding: 0 10%;
+  }
+  #about-target .about-text-shell .about-text {
+    line-height: 23px;
+  }
+  #about-target .benefits-area {
+    min-height: 70vh;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  #about-target .benefits-area .benefit-card {
+    border-radius: 35px;
+    width: 450px;
+    height: 190px;
+    padding: 0 20px;
+    margin: 12px 30px;
+  }
+  #about-target .benefits-area .benefit-card .benefit-card-icon {
+    width: 55px;
+    height: 55px;
+  }
+  #about-target .benefits-area .benefit-card .benefit-card-text h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  #about-target .benefits-area .benefit-card .benefit-card-text p {
+    font-size: 13px;
+  }
+  #services {
+    margin: 50vh 0 200px 0;
+    height: 1480px;
+  }
+  #services h2 {
+    height: 10%;
+    width: 70%;
+    padding: 0 15%;
+  }
+  #services .services-area {
+    height: 90%;
+    width: 86%;
+    padding: 0% 7%;
+    justify-content: center;
+  }
+  #services .services-area .service-shell {
+    border-radius: 40px;
+    background: #161B22;
+    border: 1px solid #2F353D;
+    width: 240px;
+    height: 370px;
+    margin: 0 auto;
+  }
+  #services .services-area .service-shell .price-area {
+    padding-bottom: 5%;
+    height: 35%;
+  }
+  #services .services-area .service-shell .price-area .discount-num {
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-size: 20px;
+  }
+  #services .services-area .service-shell .price-area .price-shell .price-currency {
+    font-size: 30px;
+  }
+  #services .services-area .service-shell .price-area .price-shell .price {
+    font-size: 65px;
+  }
+  #services .services-area .service-shell .price-area .price-extra {
+    font-size: 14px;
+  }
+  #services .services-area .service-shell .order-but-area {
+    height: 20%;
+  }
+  #services .services-area .service-shell .order-but-area .order-but {
+    border-radius: 60px;
+    padding: 13px 35px;
+  }
+  #services .services-area .service-shell .service-text-area {
+    height: 40%;
+  }
+  #services .services-area .service-shell .service-text-area .service-text {
+    font-size: 18px;
+  }
+  #services .services-area .service-shell .service-text-area .service-text-extra {
+    font-size: 14px;
+  }
+  #services .services-area .service-shell_main {
+    width: 270px;
+    height: 420px;
+    order: -1;
+    margin: 35px 0;
+    box-shadow: 0px -10px 120px rgba(255, 167, 81, 0.2);
+    border-color: #ffa751;
+    transform: scale(1.07);
+  }
+  #services .services-area .service-shell_main .service-text-area .service-text {
+    font-size: 26px;
+  }
+  #how-it-works {
+    width: 86vw;
+    padding: 10vw 7vw 10% 7vw;
+    flex-direction: column;
+    justify-content: start;
+  }
+  #how-it-works h2 {
+    width: 100%;
+    text-align: center;
+    top: 100px;
+    transition: all 0.3s ease;
+  }
+  #how-it-works .how-text-area {
+    width: 100%;
+  }
+  #how-it-works .how-text-area p {
+    font-size: 14px;
+  }
+  #how-it-works .how-text-area p .how-point {
+    font-size: 24px;
+  }
+  #how-it-works .how-text-area p .anti-reveal-how-text {
+    font-size: 14px;
+  }
+  #how-it-works .how-text-area .how-num-1 {
+    top: 150px;
+  }
+  #how-it-works .how-text-area .how-num-2 {
+    top: 210px;
+  }
+  #how-it-works .how-text-area .how-num-3 {
+    top: 270px;
+  }
+  #how-it-works .how-text-area .how-num-4 {
+    top: 330px;
+  }
+  #how-it-works .how-text-area .how-num-5 {
+    top: 390px;
+  }
+  #how-it-works .how-text-area .how-num-6 {
+    top: 450px;
+  }
+  #how-it-works .how-text-area .how-num-7 {
+    top: 510px;
+  }
+  #how-it-works .how-text-area .how-num-8 {
+    top: 570px;
+  }
+  #portfolio {
+    height: 580px;
+    margin: 250px 0;
+  }
+  #portfolio .portfolio-title {
+    width: 70%;
+    text-align: center;
+    left: 0;
+    top: 6%;
+    font-size: 35px;
+    margin: 0 15%;
+  }
+  #portfolio .portfolio-title_active {
+    color: #726ecf;
+  }
+  #portfolio .projects-area {
+    margin-top: 25%;
+    height: 75%;
+  }
+  #portfolio .projects-area .projects-clickable-area {
+    height: 80%;
+    width: 20%;
+  }
+  #portfolio .projects-area .projects-clickable-area-left {
+    border-radius: 0 30px 30px 0;
+    left: -200%;
+  }
+  #portfolio .projects-area .projects-clickable-area-right {
+    border-radius: 30px 0 0 30px;
+    right: 0;
+    width: 100%;
+  }
+  #portfolio .projects-area .projects-clickable-area-left_active {
+    left: 0;
+  }
+  #portfolio .projects-area .projects-clickable-area-right_active {
+    width: 20%;
+  }
+  #portfolio .projects-area .projects-clickable-area_mobile {
+    width: 60%;
+    margin: 0 0 0 20%;
+  }
+  #portfolio .projects-area .projects {
+    margin-left: 9%;
+  }
+  #portfolio .projects-area .projects .project {
+    margin: 0 8px;
+    width: 220px;
+    height: 360px;
+    border-radius: 30px;
+  }
+  #portfolio .projects-area .projects .project-2 {
+    z-index: 5;
+    transform: scale(0.85) translateX(-90%);
+  }
+  #portfolio .projects-area .projects .project-3 {
+    z-index: 4;
+    transform: scale(0.7) translateX(-230%);
+  }
+  #portfolio .projects-area .projects-active {
+    margin-left: 2%;
+  }
+  #contact {
+    height: 1450px;
+    padding: 10vh 5vw 8vh 5vw;
+  }
+  #contact .contact-title-area {
+    height: 8%;
+    padding: 0 5%;
+  }
+  #contact .contact-title-area p {
+    width: 80%;
+  }
+  #contact .inputs-area {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  #contact .inputs-area .forms .input-shell {
+    margin: 10px 0;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-label {
+    font-size: 16px;
+    padding: 0px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-label span {
+    font-size: 13px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input {
+    height: 26px;
+    width: 230px;
+    padding: 5px 20px;
+    font-size: 14px;
+  }
+  #contact .inputs-area .forms .input-shell .contact-input-textarea {
+    border-radius: 20px;
+    height: 100px;
+    padding: 10px 20px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell {
+    width: 270px;
+    margin: 15px 0;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-input-label {
+    font-size: 16px;
+    padding: 2px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell {
+    height: 45px;
+    width: 90%;
+    padding: 0 5%;
+    border-radius: 10px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox {
+    width: 23px;
+    height: 23px;
+    margin: 0 10% 0 5%;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-shell .checkbox .checkbox-filled {
+    width: 70%;
+    height: 70%;
+    border-radius: 4px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-target {
+    border-radius: 24px 24px 12px 12px;
+  }
+  #contact .inputs-area .forms .ckechbox-shell .contact-service-banners {
+    border-radius: 12px 12px 24px 24px;
+  }
+  #contact .inputs-area .submit-but-area {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-top: 15px;
+  }
+  #contact .inputs-area .submit-but-area .submit-but {
+    border-radius: 60px;
+    margin: 10px 0;
+    padding: 15px 35px;
+  }
+  #contact .inputs-area .contact-extra-line-shell {
+    display: none;
+  }
+  #contact .inputs-area .contacts-extra-area {
+    width: 100%;
+    justify-content: start;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contacts-extra-text {
+    display: none;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell {
+    margin: 10px 0;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .icon {
+    height: 100%;
+    width: 25px;
+    margin-right: 10px;
+  }
+  #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .email, #contact .inputs-area .contacts-extra-area .contacts-extra .contact-extra-shell .telegram {
+    font-size: 28px;
+  }
+  #contact .inputs-area .submit-popup {
+    height: 80px;
+    top: 95px;
+    left: calc(50% - 170px);
+    width: 340px;
+    border-radius: 24px;
+  }
+  #contact .inputs-area .submit-popup img {
+    height: 50px;
+    width: 50px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area {
+    height: 55%;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area h4 {
+    font-size: 17px;
+  }
+  #contact .inputs-area .submit-popup .submit-popup_text-area p {
+    font-size: 13px;
+  }
+  footer {
+    height: 70px;
+    margin: 0px 0 10px 0;
+  }
+  footer .footer-links-area .footer-links .the-name {
+    font-size: 20px;
+  }
+}
+@media (min-width: 400px) and (max-width: 480px) {
+  #portfolio .projects-area .projects {
+    margin-left: 14%;
+  }
+  #portfolio .projects-area .projects-active {
+    margin-left: 2%;
   }
 }/*# sourceMappingURL=styles.css.map */

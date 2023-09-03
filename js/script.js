@@ -24,6 +24,18 @@ const navbarBut = document.querySelectorAll('.middle-but-shell');
 const screenHeight = window.innerHeight;
 
 let ishomeSec = true;
+let isMobile = false;
+
+
+
+
+// mobile (ontouch)
+document.addEventListener('touchstart', onTouch);
+
+function onTouch() {
+    document.removeEventListener('touchstart', onTouch);
+    isMobile = true;
+}
 
 
 
@@ -34,11 +46,24 @@ const links = document.querySelectorAll('a[href*="#"]');
 for (let link of links) {
     const link_href = link.getAttribute('href');
     link.addEventListener('click', e => {
+        if (navBar.hasAttribute('style')) {
+            mobileNavbarIsActive = false;
+            navBar.style = null;
+        }
+
         e.preventDefault();
-        document.querySelector(link_href).scrollIntoView({
-            block: "start",
-            behavior: "smooth"
-        });
+        if (link_href == '#portfolio') {
+            document.querySelector(link_href).scrollIntoView({
+                block: "center",
+                behavior: "smooth"
+            });
+        }
+        else {
+            document.querySelector(link_href).scrollIntoView({
+                block: "start",
+                behavior: "smooth"
+            });
+        }
     });
 }
 
@@ -49,7 +74,7 @@ for (let link of links) {
 const navbarMobileBut = document.querySelector('.navbar-mobile-but');
 const navbarCloseBut = document.querySelector('.navbar_close-but');
 
-
+let mobileNavbarIsActive = false;
 
 navbarMobileBut.addEventListener('click', () => {
     navBar.style.transform = 'translateY(0)';
@@ -57,12 +82,16 @@ navbarMobileBut.addEventListener('click', () => {
         navBar.style.borderRadius = 0;
     }, 400);
 
+    mobileNavbarIsActive =  true; 
+    curPageScrollPos = window.scrollY;
+    
     navbarCloseBut.addEventListener('click', onNavbarCloseBut);
 });
 
 
 function onNavbarCloseBut() {
-    navBar.style = null;
+    navBar.removeAttribute('style');
+    mobileNavbarIsActive =  false; 
 }
 
 
@@ -70,10 +99,14 @@ function onNavbarCloseBut() {
 
 
 
+window.addEventListener('scroll', (e) => {
+    // ----------------- navbar mobile scroll disable -----------------
+    if (mobileNavbarIsActive) {
+        window.scrollTo(0, curPageScrollPos);
+    }
 
 
 
-window.addEventListener('scroll', () => {
     // ----------------- navbar -----------------
     navbarBut.forEach(elem => {
         if (elem.href.includes('#about-target') && aboutTargetSec.getBoundingClientRect().top < 300 && servicesSec.getBoundingClientRect().top > 300) {
@@ -123,11 +156,17 @@ window.addEventListener('scroll', () => {
     }
 
 
+
+
+    
     // ----------------- how section -----------------
     // let howSecAntiRevealPoint = 740;
     let howSecAntiRevealPoint = 650;
-    if (screenHeight >= 768 && screenHeight < 800) howSecAntiRevealPoint = 630;
+    if (screenHeight >= 800) howSecAntiRevealPoint = 520;
+    else if (screenHeight >= 768 && screenHeight < 800) howSecAntiRevealPoint = 630;
     else if (screenHeight >= 600 && screenHeight < 768) howSecAntiRevealPoint = 520;
+
+    if (window.innerWidth < 480) howSecAntiRevealPoint = 580;
     // if (window.visualViewport.height >= 900) howSecAntiRevealPoint = 670;
     // if (window.visualViewport.height >= 1000) howSecAntiRevealPoint = 750;
     // console.log(window.visualViewport)
@@ -147,6 +186,17 @@ window.addEventListener('scroll', () => {
         antiRevealHowText.style.opacity = 1;
         howTitle.style.opacity = 1;
     }
+
+
+
+
+
+    // portfolio (reset)
+    if (portfolioSec.getBoundingClientRect().bottom < 0 || portfolioSec.getBoundingClientRect().top - screenHeight > 0) {
+        projectsReset();
+    }
+
+
 
 
 
@@ -174,7 +224,7 @@ const homeTitle = document.querySelector('.home-main-text');
 const homeTitleBg = document.querySelector('.home-main-text_bg');
 
 document.addEventListener('mousemove', e => {
-    if (ishomeSec) {
+    if (ishomeSec && isMobile == false) {
         homeTitle.style.transform = `translateX(${elemOnMouseMove(homeTitle, e, 30, false).x}px)`;
 
         homeTitleBg.style.transform = `translate(${elemOnMouseMove(homeTitleBg, e, 15, true).x}px, ${elemOnMouseMove(homeTitleBg, e, 15, true).y}px)`;
@@ -218,7 +268,7 @@ const project_all = document.querySelectorAll('.project');
 
 const projectsClickableArea_left = document.querySelector('.projects-clickable-area-left');
 const projectsClickableArea_right = document.querySelector('.projects-clickable-area-right');
-
+const projectsClickableArea_mobile = document.querySelector('.projects-clickable-area_mobile');
 
 const projectsWidth = projects.getBoundingClientRect().width;
 const projectWidth = projectsWidth / (project_all.length - project_all.length * 5/100); // !!!????
@@ -226,12 +276,13 @@ const projectWidth = projectsWidth / (project_all.length - project_all.length * 
 
 
 let portfolioButPress = 0;
-let bool = false;
+let isPressed = false;
 
-projectsClickableArea_right.addEventListener('click', () => {
-    portfolioCursorBut.classList.add('portfolio_cursor-but_pressed');
-    
+
+function onProjectsClickableArea_right() {    
     if (portfolioButPress == 0) {
+        portfolio_mobile();
+
         portfolioTitle.classList.add('portfolio-title_active');
         project_all[1].classList.remove('project-2');
         project_all[2].classList.remove('project-3');
@@ -241,18 +292,23 @@ projectsClickableArea_right.addEventListener('click', () => {
         projectsClickableArea_left.classList.add('projects-clickable-area-left_active');
     }
 
-    if (portfolioButPress < project_all.length-2 && bool == true) portfolioButPress++;
+    let portfolioButPress_max = project_all.length - 2;
+    if (window.innerWidth < 768) {
+        portfolioButPress_max = project_all.length - 1;
+    }
+
+    if (portfolioButPress < portfolioButPress_max && isPressed == true) portfolioButPress++;
     projects.style.transform = `translateX(-${projectWidth * portfolioButPress}px)`;
 
-    bool = true;
-});
+    isPressed = true;
+}
 
-projectsClickableArea_left.addEventListener('click', () => {
+function onProjectsClickableArea_left() {
     if (portfolioButPress == 0) {
         portfolioTitle.classList.remove('portfolio-title_active');
         project_all[1].classList.add('project-2');
         project_all[2].classList.add('project-3');
-        bool = false;
+        isPressed = false;
         projects.classList.remove('projects-active');
 
         projectsClickableArea_right.classList.remove('projects-clickable-area-right_active');
@@ -261,9 +317,58 @@ projectsClickableArea_left.addEventListener('click', () => {
 
     if (portfolioButPress > 0) portfolioButPress--;
     projects.style.transform = `translateX(-${projectWidth * portfolioButPress}px)`;
+}
 
-    // portfolioCursorBut.classList.remove('portfolio_cursor-but_pressed');
+
+projectsClickableArea_right.addEventListener('click', onProjectsClickableArea_right);
+projectsClickableArea_left.addEventListener('click', onProjectsClickableArea_left);
+
+
+
+
+
+function projectsReset() {
+    for (let i = 0; i < portfolioButPress + 1; i++) {
+        onProjectsClickableArea_left();
+        console.log(portfolioButPress);
+    }
+}
+
+
+
+
+// portfolio mobile
+function portfolio_mobile() {
+    if (isMobile) {
+        projectsClickableArea_mobile.classList.add('projects-clickable-area_mobile_active');
+    } else {
+        projectsClickableArea_mobile.classList.remove('projects-clickable-area_mobile_active');
+    }
+}
+
+
+let touchStart = 0;
+let touchEnd = 0;
+
+projectsClickableArea_mobile.addEventListener('touchstart', e => {
+    touchStart = e.touches[0].clientX;
+    projectsClickableArea_mobile.addEventListener('touchend', onTouchEnd);
 });
+
+function onTouchEnd(e) {
+    projectsClickableArea_mobile.removeEventListener('touchend', onTouchEnd);
+    touchEnd = e.changedTouches[0].clientX;
+
+    if (touchEnd < touchStart) {
+        onProjectsClickableArea_right();
+    }
+    else if (touchEnd > touchStart) {
+        onProjectsClickableArea_left();
+    }
+
+    console.log(touchStart, touchEnd);
+}
+
 
 
 
@@ -297,6 +402,9 @@ projectsClickableArea_all.forEach(elem => {
 document.addEventListener('touchstart', () => {portfolioCursorBut.style.display = 'none'});
 document.addEventListener('touchmove', () => {portfolioCursorBut.style.display = 'none'});
 document.addEventListener('touchend', () => {portfolioCursorBut.style.display = 'none'});
+
+
+
 
 
 
