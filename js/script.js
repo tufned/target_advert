@@ -565,15 +565,19 @@ function onSubmitFrom (e) {
 
     console.log(contactForm_data);
 
-    // emailjs.send('targetAd_landing', 'template_nhub7rt', contactForm_data)
-    //     .then(function(response) {
-    //        console.log('SUCCESS!', response.status, response.text);
-    //     }, function(error) {
-    //        console.log('FAILED...', error);
-    //     });
+    emailjs.send('targetAd_landing', 'template_nhub7rt', contactForm_data)
+        .then(function(response) {
+           console.log('SUCCESS!', response.status, response.text);
+           onFormSuccess();
+        }, function(error) {
+           console.log('FAILED...', error);
+           onFormError();
+        });
+}
 
 
 
+function onFormSuccess() {
     contactInput_all.forEach(elem => {
         elem.value = '';
     })
@@ -585,6 +589,22 @@ function onSubmitFrom (e) {
         }
     })
     contactInput_textarea.value = '';
+
+    submitPopup.classList.add('submit-popup_active');
+    setTimeout(() => {
+        submitPopup.classList.remove('submit-popup_active');
+    }, 13000);
+}
+
+
+function onFormError() {
+    const submitPopup_img = submitPopup.querySelector('.submit-popup_img');
+    const submitPopup_title = submitPopup.querySelector('.submit-popup_text-area h4');
+    const submitPopup_extraText = submitPopup.querySelector('.submit-popup_text-area p');
+
+    submitPopup_img.src = './assets/icons/close-circle-svgrepo-com_red.svg';
+    submitPopup_title.innerHTML = 'Не вдалося відправити заяву';
+    submitPopup_extraText.innerHTML = 'Спробуйте, будь ласка, пізніше';
 
     submitPopup.classList.add('submit-popup_active');
     setTimeout(() => {
